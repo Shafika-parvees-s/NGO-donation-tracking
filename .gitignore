@@ -1,0 +1,24 @@
+# Git ignore rule file for NGO Donation & Impact Tracking Dashboard
+
+# IDE & Editor files
+.idea/
+.vscode/
+*.swp
+*.cls
+
+# Build outputs
+target/
+build/
+bin/
+node_modules/
+.DS_Store
+
+# Environment & Credentials
+.env
+application-local.properties
+*.pem
+*.key
+
+# Database data
+*.sqlite
+*.log
