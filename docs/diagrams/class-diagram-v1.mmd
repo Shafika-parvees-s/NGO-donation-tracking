@@ -1,0 +1,79 @@
+classDiagram
+
+    class User {
+        Long id
+        String name
+        String email
+        String password
+        String role
+    }
+
+    class NGO {
+        Long id
+        String name
+        String description
+        String email
+        String status
+    }
+
+    class Campaign {
+        Long id
+        String title
+        String description
+        String category
+        Double targetAmount
+        Double collectedAmount
+        String imageUrl
+    }
+
+    class Donation {
+        Long id
+        Double amount
+        String donorName
+        String donorEmail
+        String paymentStatus
+    }
+
+    class ImpactReport {
+        Long id
+        String title
+        String description
+        String imageUrl
+        Double amountUsed
+    }
+
+    class UserController
+    class NGOController
+    class CampaignController
+    class DonationController
+    class ImpactReportController
+
+    class UserService
+    class NGOService
+    class CampaignService
+    class DonationService
+    class ImpactReportService
+
+    class UserRepository
+    class NGORepository
+    class CampaignRepository
+    class DonationRepository
+    class ImpactReportRepository
+
+    User "1" --> "many" Donation
+    NGO "1" --> "many" Campaign
+    Campaign "1" --> "many" Donation
+    Campaign "1" --> "many" ImpactReport
+    NGO "1" --> "many" ImpactReport
+
+    UserController --> UserService
+    NGOController --> NGOService
+    CampaignController --> CampaignService
+    DonationController --> DonationService
+    ImpactReportController --> ImpactReportService
+
+    UserService --> UserRepository
+    NGOService --> NGORepository
+    CampaignService --> CampaignRepository
+    DonationService --> DonationRepository
+    ImpactReportService --> ImpactReportRepository
