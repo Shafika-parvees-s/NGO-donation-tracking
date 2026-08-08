@@ -1,131 +1,250 @@
-/* ================================================================
-   ImpactHub CSS - Modern Dark Glassmorphism Styling System
-   ================================================================ */
+/* =========================================
+   ImpactHub - NGO Donation Website
+   ========================================= */
 
-:root {
-    --bg-dark: #0f172a;
-    --card-bg: rgba(30, 41, 59, 0.7);
-    --border-color: rgba(255, 255, 255, 0.1);
-    --accent: #06b6d4;
-    --accent-hover: #0891b2;
-    --accent-soft: rgba(6, 182, 212, 0.15);
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
+
+/* ---------- Basic Settings ---------- */
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    font-family: 'Outfit', sans-serif;
-    min-height: 100vh;
+    margin: 0;
+    background-color: #0f172a;
+    color: #f8fafc;
+    font-family: Arial, sans-serif;
 }
 
-/* Custom Navbar */
+
+/* ---------- Navigation ---------- */
+
 .custom-navbar {
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 5%;
+
+    background-color: #111827;
+
+    border-bottom: 1px solid #334155;
 }
+
+.logo h2 {
+    margin: 0;
+}
+
+
+/* Logo Color */
 
 .text-gradient {
-    background: linear-gradient(135deg, #06b6d4, #3b82f6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #06b6d4;
 }
 
-.text-accent {
-    color: var(--accent) !important;
+
+/* Navigation Links */
+
+.nav-links a {
+    color: #f8fafc;
+
+    text-decoration: none;
+
+    margin: 0 12px;
+
+    font-weight: bold;
 }
+
+.nav-links a:hover {
+    color: #06b6d4;
+}
+
+
+/* ---------- Buttons ---------- */
 
 .btn-accent {
-    background-color: var(--accent);
-    color: #fff;
+    background-color: #06b6d4;
+
+    color: white;
+
     border: none;
-    transition: all 0.3s ease;
+
+    padding: 10px 18px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-weight: bold;
 }
 
 .btn-accent:hover {
-    background-color: var(--accent-hover);
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+    background-color: #0891b2;
 }
 
-.btn-outline-accent {
-    border: 1px solid var(--accent);
-    color: var(--accent);
+
+/* ---------- Hero Section ---------- */
+
+.hero-card {
+    width: 90%;
+
+    margin: 30px auto;
+
+    padding: 70px 30px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            rgba(15, 23, 42, 0.85),
+            rgba(15, 23, 42, 0.95)
+        ),
+        url("https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80");
+
+    background-size: cover;
+
+    background-position: center;
 }
 
-.btn-outline-accent:hover {
-    background-color: var(--accent);
-    color: #fff;
+.hero-content h1 {
+    font-size: 40px;
+
+    margin-bottom: 15px;
 }
 
-/* Glassmorphism Cards */
+.hero-content p {
+    font-size: 18px;
+
+    color: #cbd5e1;
+
+    margin-bottom: 25px;
+}
+
+
+/* ---------- Main Container ---------- */
+
+.container {
+    width: 90%;
+
+    margin: 40px auto;
+}
+
+
+/* Section Title */
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    color: #06b6d4;
+}
+
+
+/* ---------- Campaign Cards ---------- */
+
+.campaigns {
+    display: flex;
+
+    gap: 25px;
+
+    justify-content: center;
+}
+
 .glass-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    width: 32%;
+
+    padding: 25px;
+
+    background-color: #1e293b;
+
+    border: 1px solid #334155;
+
+    border-radius: 12px;
+
+    transition: 0.3s;
 }
 
 .glass-card:hover {
-    border-color: rgba(6, 182, 212, 0.4);
+    transform: translateY(-5px);
+
+    border-color: #06b6d4;
 }
 
-.hero-card {
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)),
-                url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80');
-    background-size: cover;
-    background-position: center;
-    border: 1px solid var(--border-color);
+.campaign-card h3 {
+    color: #06b6d4;
+
+    font-size: 22px;
 }
 
-.hero-img {
-    max-height: 320px;
-    object-fit: cover;
-    border: 2px solid var(--border-color);
+.campaign-card p {
+    color: #cbd5e1;
+
+    line-height: 1.5;
 }
 
-/* Campaign Cards */
-.campaign-card img {
-    height: 200px;
-    object-fit: cover;
-}
+
+/* ---------- Progress Bar ---------- */
 
 .progress-custom {
+    width: 100%;
+
     height: 10px;
-    background-color: rgba(255, 255, 255, 0.1);
+
+    background-color: #334155;
+
     border-radius: 10px;
+
     overflow: hidden;
 }
 
 .progress-bar-accent {
-    background: linear-gradient(90deg, #06b6d4, #3b82f6);
+    height: 100%;
+
+    background-color: #06b6d4;
 }
 
-/* Custom Modal */
-.custom-modal-content {
-    background-color: #1e293b;
-    color: #fff;
-    border: 1px solid var(--border-color);
-    border-radius: 1rem;
+
+/* ---------- Footer ---------- */
+
+footer {
+    margin-top: 50px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    background-color: #111827;
+
+    color: #94a3b8;
 }
 
-.custom-input {
-    background-color: #0f172a;
-    border: 1px solid var(--border-color);
-    color: #fff;
-}
 
-.custom-input:focus {
-    background-color: #0f172a;
-    border-color: var(--accent);
-    color: #fff;
-    box-shadow: 0 0 0 0.25rem rgba(6, 182, 212, 0.25);
-}
+/* ---------- Mobile Responsive ---------- */
 
-.role-badge {
-    border: 1px solid var(--border-color);
+@media (max-width: 768px) {
+
+    .custom-navbar {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .nav-links {
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .campaigns {
+        flex-direction: column;
+    }
+
+    .glass-card {
+        width: 100%;
+    }
 }

@@ -1,445 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ImpactHub - NGO Donation & Transparent Impact Tracking Platform</title>
-    <meta name="description" content="Transparent NGO Fundraising, Real-time Donation Analytics & Verified Impact Tracking Platform.">
-    <!-- Google Fonts & Bootstrap 5 & FontAwesome & Chart.js -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>ImpactHub - NGO Donation & Impact Tracking</title>
+
+    <!-- CSS File -->
     <link rel="stylesheet" href="css/styles.css">
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
-    <!-- Navigation Header -->
-    <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#" onclick="switchTab('home')">
-                <i class="fa-solid fa-hand-holding-heart text-gradient fs-2 me-2"></i>
-                <span class="fw-bold fs-4 logo-text">Impact<span class="text-accent">Hub</span></span>
-            </a>
-            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" id="nav-home" href="#" onclick="switchTab('home')">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" id="nav-campaigns" href="#" onclick="switchTab('campaigns')">Campaigns</a></li>
-                    <li class="nav-item"><a class="nav-link" id="nav-impact" href="#" onclick="switchTab('impact')">Impact Reports</a></li>
-                    <li class="nav-item"><a class="nav-link" id="nav-about" href="#" onclick="switchTab('about')">About NGO</a></li>
-                    <li class="nav-item"><a class="nav-link" id="nav-contact" href="#" onclick="switchTab('contact')">Contact</a></li>
-                </ul>
+    <!-- Navigation Bar -->
+    <nav class="custom-navbar">
 
-                <!-- Role Selector Switcher for Viva Demo -->
-                <div class="d-flex align-items-center gap-2">
-                    <div class="role-badge px-3 py-1 bg-glass rounded-pill me-2">
-                        <small class="text-muted d-block text-center" style="font-size: 0.7rem;">Active View</small>
-                        <span id="current-role-display" class="fw-bold text-accent">Donor View</span>
-                    </div>
-                    <div class="dropdown me-2">
-                        <button class="btn btn-outline-light btn-sm dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-user-gear me-1"></i> Switch Role
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#" onclick="setUserRole('DONOR')"><i class="fa-solid fa-heart me-2 text-danger"></i>Donor Role</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="setUserRole('NGO')"><i class="fa-solid fa-building-ngo me-2 text-warning"></i>NGO Partner Role</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="setUserRole('ADMIN')"><i class="fa-solid fa-shield-halved me-2 text-info"></i>System Admin Role</a></li>
-                        </ul>
-                    </div>
-                    <button class="btn btn-accent rounded-pill px-4" id="dashboard-btn" onclick="switchTab('dashboard')">
-                        <i class="fa-solid fa-chart-line me-1"></i> Dashboard
-                    </button>
-                </div>
-            </div>
+        <div class="logo">
+            <h2 class="text-gradient">ImpactHub</h2>
         </div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Campaigns</a>
+            <a href="#">About</a>
+            <a href="#">Login</a>
+        </div>
+
+        <button class="btn-accent">Donate Now</button>
+
     </nav>
 
-    <!-- Dynamic Main Content Wrapper -->
-    <main class="container my-4">
 
-        <!-- TAB 1: HOME PAGE -->
-        <section id="tab-home" class="tab-pane active">
-            <!-- Hero Banner -->
-            <div class="hero-card p-5 rounded-4 mb-5 text-white position-relative overflow-hidden shadow-lg">
-                <div class="row align-items-center position-relative z-2">
-                    <div class="col-lg-7">
-                        <span class="badge bg-accent-soft text-accent rounded-pill px-3 py-2 mb-3 fw-semibold">100% Verified Impact Tracking</span>
-                        <h1 class="display-4 fw-bold mb-3">Empowering Every Rupee with <span class="text-accent">Transparent Proof</span></h1>
-                        <p class="lead mb-4 text-light-subtle">Connect directly with vetted NGOs, donate effortlessly via Razorpay, and track real-time photographic and financial impact reports for your contributions.</p>
-                        <div class="d-flex flex-wrap gap-3">
-                            <button class="btn btn-accent btn-lg rounded-pill px-4 shadow" onclick="switchTab('campaigns')">
-                                Explore Campaigns <i class="fa-solid fa-arrow-right ms-2"></i>
-                            </button>
-                            <button class="btn btn-outline-light btn-lg rounded-pill px-4" onclick="switchTab('impact')">
-                                View Impact Reports
-                            </button>
+    <!-- Hero Section -->
+    <section class="hero-card">
+
+        <div class="hero-content">
+
+            <h1>NGO Donation & Impact Tracking</h1>
+
+            <p>
+                Support meaningful campaigns and track
+                how your donation creates an impact.
+            </p>
+
+            <button class="btn-accent">
+                Explore Campaigns
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <h2 class="section-title">
+            Active Campaigns
+        </h2>
+
+
+        <!-- Campaign Cards -->
+        <div class="campaigns">
+
+
+            <!-- Campaign 1 -->
+            <div class="glass-card campaign-card">
+
+                <div class="campaign-content">
+
+                    <h3>Education Support</h3>
+
+                    <p>
+                        Help provide education and learning
+                        materials for children.
+                    </p>
+
+                    <p>
+                        <strong>Goal:</strong> ₹50,000
+                    </p>
+
+                    <p>
+                        <strong>Collected:</strong> ₹32,000
+                    </p>
+
+                    <!-- Progress -->
+                    <div class="progress-custom">
+
+                        <div
+                            class="progress-bar-accent"
+                            style="width: 64%;">
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <button class="btn-accent">
+                        Donate
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Campaign 2 -->
+            <div class="glass-card campaign-card">
+
+                <div class="campaign-content">
+
+                    <h3>Food Donation</h3>
+
+                    <p>
+                        Help provide food for people
+                        in need.
+                    </p>
+
+                    <p>
+                        <strong>Goal:</strong> ₹30,000
+                    </p>
+
+                    <p>
+                        <strong>Collected:</strong> ₹18,000
+                    </p>
+
+                    <!-- Progress -->
+                    <div class="progress-custom">
+
+                        <div
+                            class="progress-bar-accent"
+                            style="width: 60%;">
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <button class="btn-accent">
+                        Donate
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Campaign 3 -->
+            <div class="glass-card campaign-card">
+
+                <div class="campaign-content">
+
+                    <h3>Medical Support</h3>
+
+                    <p>
+                        Support medical treatment
+                        for needy people.
+                    </p>
+                    <p>
+                        <strong>Goal:</strong> ₹75,000
+                    </p>
+                    <p>
+                        <strong>Collected:</strong> ₹45,000
+                    </p>
+                    <!-- Progress -->
+                    <div class="progress-custom">
+                        <div
+                            class="progress-bar-accent"
+                            style="width: 60%;">
                         </div>
                     </div>
-                    <div class="col-lg-5 mt-4 mt-lg-0 text-center">
-                        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80" alt="Impact banner" class="img-fluid rounded-4 shadow-lg hero-img">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Global Metrics Overview -->
-            <div class="row g-4 mb-5">
-                <div class="col-md-3 col-6">
-                    <div class="metric-card p-4 rounded-4 text-center glass-card">
-                        <i class="fa-solid fa-indian-rupee-sign text-accent fs-1 mb-2"></i>
-                        <h3 class="fw-bold mb-0">₹9,55,000+</h3>
-                        <p class="text-muted small mb-0">Total Funds Raised</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="metric-card p-4 rounded-4 text-center glass-card">
-                        <i class="fa-solid fa-users text-primary fs-1 mb-2"></i>
-                        <h3 class="fw-bold mb-0">1,650+</h3>
-                        <p class="text-muted small mb-0">Lives Impacted</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="metric-card p-4 rounded-4 text-center glass-card">
-                        <i class="fa-solid fa-building-ngo text-success fs-1 mb-2"></i>
-                        <h3 class="fw-bold mb-0">45+</h3>
-                        <p class="text-muted small mb-0">Verified NGO Partners</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6">
-                    <div class="metric-card p-4 rounded-4 text-center glass-card">
-                        <i class="fa-solid fa-file-circle-check text-warning fs-1 mb-2"></i>
-                        <h3 class="fw-bold mb-0">100%</h3>
-                        <p class="text-muted small mb-0">Tax Exempt 80G Receipts</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Featured Campaigns -->
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <div>
-                    <h2 class="fw-bold mb-1">Active Urgent Campaigns</h2>
-                    <p class="text-muted mb-0">Support verified initiatives changing communities today</p>
-                </div>
-                <button class="btn btn-link text-accent fw-bold text-decoration-none" onclick="switchTab('campaigns')">See All <i class="fa-solid fa-chevron-right ms-1"></i></button>
-            </div>
-            <div class="row g-4" id="featured-campaigns-container">
-                <!-- Injected via JavaScript -->
-            </div>
-        </section>
-
-        <!-- TAB 2: CAMPAIGNS CATALOG -->
-        <section id="tab-campaigns" class="tab-pane d-none">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <div>
-                    <h2 class="fw-bold mb-1">Browse All Campaigns</h2>
-                    <p class="text-muted mb-0">Filter by category or cause to support verified projects</p>
-                </div>
-                <div class="d-flex gap-2">
-                    <select class="form-select custom-input rounded-pill" id="category-filter" onchange="filterCampaigns()">
-                        <option value="ALL">All Categories</option>
-                        <option value="Education">Education</option>
-                        <option value="Healthcare">Healthcare</option>
-                        <option value="Environment">Environment</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row g-4" id="all-campaigns-container">
-                <!-- Injected via JS -->
-            </div>
-        </section>
-
-        <!-- TAB 3: IMPACT REPORTS -->
-        <section id="tab-impact" class="tab-pane d-none">
-            <div class="mb-4">
-                <h2 class="fw-bold mb-1">Transparent Impact Verification</h2>
-                <p class="text-muted">Real-time proof of funds usage uploaded by partner NGOs with photographic proof</p>
-            </div>
-            <div class="row g-4" id="impact-reports-container">
-                <!-- Injected via JS -->
-            </div>
-        </section>
-
-        <!-- TAB 4: ABOUT NGO -->
-        <section id="tab-about" class="tab-pane d-none">
-            <div class="glass-card p-5 rounded-4 mb-4">
-                <h2 class="fw-bold text-accent mb-3"><i class="fa-solid fa-circle-info me-2"></i>About ImpactHub Platform</h2>
-                <p class="lead">ImpactHub is a full-stack Capstone engineering project designed to eliminate fundraising opacity in Non-Governmental Organizations (NGOs).</p>
-                <div class="row g-4 mt-3">
-                    <div class="col-md-6">
-                        <div class="p-4 rounded-3 border border-secondary border-opacity-25 bg-dark">
-                            <h4 class="fw-bold text-white"><i class="fa-solid fa-bullseye text-accent me-2"></i>Our Mission</h4>
-                            <p class="text-muted mb-0">To empower donors with complete financial transparency using automated tax receipt generation, real-time campaign progress tracking, and verifiable photographic impact reports.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="p-4 rounded-3 border border-secondary border-opacity-25 bg-dark">
-                            <h4 class="fw-bold text-white"><i class="fa-solid fa-shield-virus text-success me-2"></i>Security & Compliance</h4>
-                            <p class="text-muted mb-0">Built using modern 3-Tier architecture (Java Spring Boot + MySQL + Responsive Frontend), complete with JWT authentication, 256-bit SSL encryption, and Razorpay payment gateway integration.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TAB 5: CONTACT -->
-        <section id="tab-contact" class="tab-pane d-none">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="glass-card p-5 rounded-4">
-                        <h2 class="fw-bold mb-2">Get in Touch with ImpactHub</h2>
-                        <p class="text-muted mb-4">Have questions about NGO registration, donations, or technical architecture?</p>
-                        <form onsubmit="handleContactSubmit(event)">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label text-muted">Full Name</label>
-                                    <input type="text" class="form-control custom-input" required placeholder="e.g. Surya Kumar">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label text-muted">Email Address</label>
-                                    <input type="email" class="form-control custom-input" required placeholder="name@example.com">
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label text-muted">Message Subject</label>
-                                    <input type="text" class="form-control custom-input" required placeholder="NGO Partnership Inquiry">
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label text-muted">Your Message</label>
-                                    <textarea class="form-control custom-input" rows="4" required placeholder="Type your message here..."></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-accent rounded-pill px-5">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TAB 6: DASHBOARD (MULTI-ROLE DYNAMIC VIEW) -->
-        <section id="tab-dashboard" class="tab-pane d-none">
-            
-            <!-- DONOR DASHBOARD VIEW -->
-            <div id="view-donor-dashboard" class="role-view">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                        <h2 class="fw-bold mb-0">Donor Dashboard</h2>
-                        <p class="text-muted small">Track your donations, download tax receipts, and view impact</p>
-                    </div>
-                    <span class="badge bg-success rounded-pill px-3 py-2"><i class="fa-solid fa-circle-check me-1"></i> Logged in as Surya Donor</span>
-                </div>
-
-                <div class="row g-4 mb-4">
-                    <div class="col-md-4">
-                        <div class="glass-card p-4 rounded-4 text-center">
-                            <h5 class="text-muted mb-1">Total Donated</h5>
-                            <h2 class="fw-bold text-accent mb-0" id="donor-total-donated">₹30,000</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="glass-card p-4 rounded-4 text-center">
-                            <h5 class="text-muted mb-1">Campaigns Supported</h5>
-                            <h2 class="fw-bold text-primary mb-0">3</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="glass-card p-4 rounded-4 text-center">
-                            <h5 class="text-muted mb-1">Tax Savings (Section 80G)</h5>
-                            <h2 class="fw-bold text-success mb-0" id="donor-tax-savings">₹15,000</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Donation History & Receipts Table -->
-                <div class="glass-card p-4 rounded-4 mb-4">
-                    <h4 class="fw-bold mb-3"><i class="fa-solid fa-receipt me-2 text-accent"></i>My Donation History & Receipts</h4>
-                    <div class="table-responsive">
-                        <table class="table table-dark table-hover align-middle">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Campaign</th>
-                                    <th>Amount</th>
-                                    <th>Razorpay Ref ID</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="donor-history-table">
-                                <!-- Injected via JS -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NGO DASHBOARD VIEW -->
-            <div id="view-ngo-dashboard" class="role-view d-none">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                        <h2 class="fw-bold mb-0">NGO Management Console</h2>
-                        <p class="text-muted small">Manage fundraising campaigns & upload verified impact proof</p>
-                    </div>
-                    <button class="btn btn-accent rounded-pill" onclick="openCreateCampaignModal()">
-                        <i class="fa-solid fa-plus me-1"></i> Create New Campaign
+                    <br>
+                    <button class="btn-accent">
+                        Donate
                     </button>
                 </div>
-
-                <div class="row g-4 mb-4">
-                    <div class="col-md-6">
-                        <div class="glass-card p-4 rounded-4">
-                            <h5 class="fw-bold mb-3">Funds Collection Trends</h5>
-                            <canvas id="ngoFundsChart" height="180"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="glass-card p-4 rounded-4">
-                            <h5 class="fw-bold mb-3">Quick Actions</h5>
-                            <div class="d-grid gap-3">
-                                <button class="btn btn-outline-light text-start p-3 rounded-3" onclick="openCreateCampaignModal()">
-                                    <i class="fa-solid fa-folder-plus text-accent me-2"></i> <strong>Launch New Fundraising Campaign</strong>
-                                    <div class="text-muted small">Submit target goal, title, and timeline for Admin review</div>
-                                </button>
-                                <button class="btn btn-outline-light text-start p-3 rounded-3" onclick="openUploadImpactModal()">
-                                    <i class="fa-solid fa-cloud-arrow-up text-success me-2"></i> <strong>Upload Impact Proof Report</strong>
-                                    <div class="text-muted small">Attach receipts and photographic proof for completed phases</div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-
-            <!-- ADMIN DASHBOARD VIEW -->
-            <div id="view-admin-dashboard" class="role-view d-none">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                        <h2 class="fw-bold mb-0">System Admin Control Center</h2>
-                        <p class="text-muted small">Approve campaigns, audit NGO verification, and system analytics</p>
-                    </div>
-                    <span class="badge bg-danger rounded-pill px-3 py-2"><i class="fa-solid fa-user-shield me-1"></i> Super Admin Privileges</span>
-                </div>
-
-                <div class="row g-4 mb-4">
-                    <div class="col-md-4">
-                        <div class="glass-card p-4 rounded-4">
-                            <h6 class="text-muted">Total Donors</h6>
-                            <h3 class="fw-bold text-white mb-0">1,240</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="glass-card p-4 rounded-4">
-                            <h6 class="text-muted">Verified NGOs</h6>
-                            <h3 class="fw-bold text-warning mb-0">45</h3>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="glass-card p-4 rounded-4">
-                            <h6 class="text-muted">Pending Approvals</h6>
-                            <h3 class="fw-bold text-accent mb-0">2 Campaigns</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Admin Analytics Chart -->
-                <div class="glass-card p-4 rounded-4 mb-4">
-                    <h5 class="fw-bold mb-3">Platform-Wide Monthly Donation Growth (₹)</h5>
-                    <canvas id="adminAnalyticsChart" height="100"></canvas>
-                </div>
-            </div>
-
-        </section>
-
+        </div>
     </main>
-
-    <!-- DONATION MODAL (RAZORPAY SIMULATOR) -->
-    <div class="modal fade" id="donationModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content custom-modal-content">
-                <div class="modal-header border-0 pb-0">
-                    <h5 class="modal-title fw-bold" id="donationModalTitle">Donate to Campaign</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <div class="alert alert-info rounded-3 py-2 mb-3" style="font-size: 0.85rem;">
-                        <i class="fa-solid fa-flask me-1"></i> <strong>Razorpay Test Sandbox Mode</strong> (Test Transactions)
-                    </div>
-                    <input type="hidden" id="modal-campaign-id">
-                    <div class="mb-3">
-                        <label class="form-label text-muted">Select or Enter Amount (₹)</label>
-                        <div class="d-flex gap-2 mb-2">
-                            <button class="btn btn-outline-accent btn-sm rounded-pill flex-fill" onclick="setDonateAmount(500)">₹500</button>
-                            <button class="btn btn-outline-accent btn-sm rounded-pill flex-fill" onclick="setDonateAmount(1000)">₹1,000</button>
-                            <button class="btn btn-outline-accent btn-sm rounded-pill flex-fill" onclick="setDonateAmount(5000)">₹5,000</button>
-                        </div>
-                        <input type="number" class="form-control custom-input" id="custom-donation-amount" placeholder="Enter custom amount" value="1000" min="10">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label text-muted">Donor Name</label>
-                        <input type="text" class="form-control custom-input" id="donor-name-input" value="Surya Donor">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label text-muted">Email for Tax Receipt</label>
-                        <input type="email" class="form-control custom-input" id="donor-email-input" value="surya.donor@gmail.com">
-                    </div>
-                    <button class="btn btn-accent w-100 rounded-pill py-3 fw-bold shadow" onclick="processRazorpayPayment()">
-                        <i class="fa-solid fa-lock me-2"></i> Pay Securely via Razorpay
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CREATE CAMPAIGN MODAL (FOR NGO ROLE) -->
-    <div class="modal fade" id="createCampaignModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content custom-modal-content">
-                <div class="modal-header border-0 pb-0">
-                    <h5 class="modal-title fw-bold">Create New Fundraising Campaign</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <form onsubmit="handleCreateCampaign(event)">
-                        <div class="mb-3">
-                            <label class="form-label text-muted">Campaign Title</label>
-                            <input type="text" class="form-control custom-input" id="new-campaign-title" required placeholder="e.g. Rural Clean Water Initiative">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-muted">Category</label>
-                            <select class="form-select custom-input" id="new-campaign-category" required>
-                                <option value="Education">Education</option>
-                                <option value="Healthcare">Healthcare</option>
-                                <option value="Environment">Environment</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-muted">Target Goal Amount (₹)</label>
-                            <input type="number" class="form-control custom-input" id="new-campaign-target" required placeholder="500000">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-muted">Banner Image URL</label>
-                            <input type="url" class="form-control custom-input" id="new-campaign-image" required value="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09">
-                        </div>
-                        <button type="submit" class="btn btn-accent w-100 rounded-pill py-2 fw-bold">Submit Campaign for Review</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
-    <footer class="bg-dark text-muted py-4 border-top border-secondary border-opacity-25 mt-5">
-        <div class="container text-center">
-            <p class="mb-1 text-light"><strong>NGO Donation & Impact Tracking Dashboard</strong> | Capstone Engineering Project</p>
-            <p class="small mb-0">Built with HTML5, CSS3, JavaScript, Java Spring Boot, MySQL & Razorpay Sandbox</p>
-        </div>
+    <footer>
+        <p>
+            © 2026 ImpactHub - NGO Donation & Impact Tracking
+        </p>
     </footer>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/app.js"></script>
 </body>
 </html>
