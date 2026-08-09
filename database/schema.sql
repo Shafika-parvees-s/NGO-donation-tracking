@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS ngos (
     ngo_id INT PRIMARY KEY AUTO_INCREMENT,
     ngo_name VARCHAR(150) NOT NULL,
     registration_number VARCHAR(50) NOT NULL UNIQUE,
-    user_id INT NOT NULL,
+    user_id INT NOT NULL UNIQUE,
     description TEXT,
     website_url VARCHAR(255),
     is_verified BOOLEAN DEFAULT FALSE,
@@ -37,14 +37,17 @@ CREATE TABLE IF NOT EXISTS campaigns (
     ngo_id INT NOT NULL,
     title VARCHAR(200) NOT NULL,
     category VARCHAR(50) NOT NULL,
-    target_amount DECIMAL(12, 2) NOT NULL,
-    raised_amount DECIMAL(12, 2) DEFAULT 0.00,
+    target_amount DECIMAL(12, 2) NOT NULL CHECK (target_amount > 0),
+    raised_amount DECIMAL(12, 2) DEFAULT 0.00 CHECK (raised_amount >= 0),
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     status ENUM('PENDING', 'ACTIVE', 'COMPLETED', 'REJECTED') DEFAULT 'PENDING',
     banner_image_url VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (ngo_id) REFERENCES ngos(ngo_id) ON DELETE CASCADE
+    CHECK (end_date >= start_date),
+    FOREIGN KEY (ngo_id)
+        REFERENCES ngos(ngo_id)
+        ON DELETE CASCADE
 );
 
 -- 4. Donations Table (Payment records linked to campaigns and donors)
@@ -52,13 +55,16 @@ CREATE TABLE IF NOT EXISTS donations (
     donation_id INT PRIMARY KEY AUTO_INCREMENT,
     campaign_id INT NOT NULL,
     donor_id INT NOT NULL,
-    amount DECIMAL(10, 2) NOT NULL,
-    razorpay_payment_id VARCHAR(100) NOT NULL UNIQUE,
-    razorpay_order_id VARCHAR(100) NOT NULL,
-    payment_status ENUM('SUCCESS', 'FAILED', 'PENDING') DEFAULT 'SUCCESS',
+    amount DECIMAL(10, 2) NOT NULL CHECK (amount > 0),
+    razorpay_payment_id VARCHAR(100) UNIQUE,
+    razorpay_order_id VARCHAR(100) UNIQUE,
+    payment_status ENUM('SUCCESS', 'FAILED', 'PENDING') DEFAULT 'PENDING',
     donated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (campaign_id) REFERENCES campaigns(campaign_id) ON DELETE CASCADE,
-    FOREIGN KEY (donor_id) REFERENCES users(user_id) ON DELETE CASCADE
+    FOREIGN KEY (campaign_id)
+        REFERENCES campaigns(campaign_id)
+        ON DELETE CASCADE,FOREIGN KEY (donor_id)
+        REFERENCES users(user_id)
+        ON DELETE CASCADE
 );
 
 -- 5. Impact Reports Table (Proof of fund usage uploaded by NGOs)
@@ -67,12 +73,14 @@ CREATE TABLE IF NOT EXISTS impact_reports (
     campaign_id INT NOT NULL,
     title VARCHAR(200) NOT NULL,
     description TEXT NOT NULL,
-    beneficiaries_impacted INT DEFAULT 0,
+    beneficiaries_impacted INT DEFAULT 0
+        CHECK (beneficiaries_impacted >= 0),
     proof_document_url VARCHAR(255),
     published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (campaign_id) REFERENCES campaigns(campaign_id) ON DELETE CASCADE
+    FOREIGN KEY (campaign_id)
+        REFERENCES campaigns(campaign_id)
+        ON DELETE CASCADE
 );
-
 -- 6. Receipts Table (Automated tax receipts generated post-donation)
 CREATE TABLE IF NOT EXISTS receipts (
     receipt_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -80,7 +88,9 @@ CREATE TABLE IF NOT EXISTS receipts (
     receipt_number VARCHAR(50) NOT NULL UNIQUE,
     issued_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     pdf_download_url VARCHAR(255),
-    FOREIGN KEY (donation_id) REFERENCES donations(donation_id) ON DELETE CASCADE
+    FOREIGN KEY (donation_id)
+        REFERENCES donations(donation_id)
+        ON DELETE CASCADE
 );
 
 -- 7. Notifications Table (System notifications for donors and NGOs)
