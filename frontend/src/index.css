@@ -1,0 +1,175 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+/* Navbar */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 6%;
+  background: #111827;
+  border-bottom: 1px solid #334155;
+}
+
+nav h2 {
+  margin: 0;
+  color: #06b6d4;
+  font-size: 28px;
+}
+
+nav div {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #06b6d4;
+}
+
+nav button {
+  background: #06b6d4;
+  color: white;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background: #0891b2;
+}
+
+/* Home */
+
+main {
+  width: 90%;
+  margin: auto;
+}
+
+main > section:first-child {
+  margin-top: 35px;
+  padding: 90px 30px;
+  text-align: center;
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      rgba(15, 23, 42, 0.85),
+      rgba(15, 23, 42, 0.95)
+    ),
+    url("./assets/hero.png");
+
+  background-size: cover;
+  background-position: center;
+}
+
+main > section:first-child h1 {
+  font-size: 45px;
+  margin-bottom: 20px;
+}
+
+main > section:first-child p {
+  color: #cbd5e1;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+main button {
+  background: #06b6d4;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Campaigns */
+
+main > section:nth-child(2) {
+  padding: 50px 0;
+}
+
+main > section:nth-child(2) h2 {
+  text-align: center;
+  color: #06b6d4;
+  font-size: 32px;
+}
+
+main > section:nth-child(2) > div {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 25px;
+  margin: 20px 0;
+}
+
+main > section:nth-child(2) h3 {
+  color: #06b6d4;
+}
+
+/* Footer */
+
+footer {
+  margin-top: 50px;
+  padding: 25px;
+  text-align: center;
+  background: #111827;
+  color: #94a3b8;
+}
+/* Login & Register Form */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 350px;
+  max-width: 90%;
+  margin: 30px auto;
+}
+
+form input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  background: #1e293b;
+  color: white;
+  font-size: 16px;
+}
+
+form input::placeholder {
+  color: #94a3b8;
+}
+
+form button {
+  width: 100%;
+  padding: 14px;
+  background: #06b6d4;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #0891b2;
+}
