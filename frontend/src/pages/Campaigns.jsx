@@ -1,4 +1,37 @@
+import { useEffect, useState } from "react";
+
 function Campaigns() {
+  const [campaigns, setCampaigns] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/campaigns")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch campaigns");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setCampaigns(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError("Unable to load campaigns");
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <p>Loading campaigns...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <main>
       <section>
@@ -8,23 +41,27 @@ function Campaigns() {
           Support our active campaigns and make a meaningful difference.
         </p>
 
-        <div>
-          <h2>Education Support</h2>
-          <p>Help provide education and learning materials for children.</p>
-          <strong>Goal: ₹50,000</strong>
-        </div>
+        {campaigns.map((campaign) => (
+          <div key={campaign.campaignId}>
+            <h2>{campaign.title}</h2>
 
-        <div>
-          <h2>Food Donation</h2>
-          <p>Help provide food for people in need.</p>
-          <strong>Goal: ₹30,000</strong>
-        </div>
+            <p>{campaign.description}</p>
 
-        <div>
-          <h2>Medical Support</h2>
-          <p>Support medical treatment for needy people.</p>
-          <strong>Goal: ₹75,000</strong>
-        </div>
+            <p>
+              <strong>Target:</strong> ₹{campaign.targetAmount}
+            </p>
+
+            <p>
+              <strong>Raised:</strong> ₹{campaign.raisedAmount}
+            </p>
+
+            <p>
+              <strong>Status:</strong> {campaign.status}
+            </p>
+
+            <button>Donate Now</button>
+          </div>
+        ))}
       </section>
     </main>
   );
