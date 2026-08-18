@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Campaigns() {
   const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:8080/api/campaigns")
@@ -59,7 +62,13 @@ function Campaigns() {
               <strong>Status:</strong> {campaign.status}
             </p>
 
-            <button>Donate Now</button>
+            <button
+              onClick={() =>
+                navigate(`/donate?campaignId=${campaign.campaignId}`)
+              }
+            >
+              Donate Now
+            </button>
           </div>
         ))}
       </section>
