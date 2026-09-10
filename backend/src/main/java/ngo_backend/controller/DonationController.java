@@ -30,11 +30,15 @@ public class DonationController {
     public List<Donation> getAllDonations() {
         return donationRepository.findAll();
     }
+    @GetMapping("/user/{userId}")
+public List<Donation> getUserDonations(@PathVariable Integer userId) {
+    return donationRepository.findByUserId(userId);
+}
 
-    @GetMapping("/{id}")
-    public Donation getDonationById(@PathVariable Integer id) {
-        return donationRepository.findById(id).orElse(null);
-    }
+@GetMapping("/{id}")
+public Donation getDonationById(@PathVariable Integer id) {
+    return donationRepository.findById(id).orElse(null);
+}
 
     @PostMapping
     public Donation createDonation(@RequestBody Donation donation) {

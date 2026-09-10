@@ -8,12 +8,11 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Donate from "./pages/Donate";
-
+import DonationHistory from "./pages/DonationHistory";
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/campaigns" element={<Campaigns />} />
@@ -21,8 +20,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/donate" element={<Donate />} />
-      </Routes>
-    </BrowserRouter>
+        <Route path="/donation-history" element={<DonationHistory />} />
+        </Routes>
+        </BrowserRouter>
   );
 }
 

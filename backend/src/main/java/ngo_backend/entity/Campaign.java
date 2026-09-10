@@ -2,7 +2,6 @@ package ngo_backend.entity;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "campaigns")
@@ -10,32 +9,27 @@ public class Campaign {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "campaign_id")
-    private Integer campaignId;
+    private Long campaignId;
 
     private String title;
 
+    @Column(length = 1000)
     private String description;
 
-    @Column(name = "target_amount")
     private BigDecimal targetAmount;
 
-    @Column(name = "raised_amount")
-    private BigDecimal raisedAmount = BigDecimal.ZERO;
+    private BigDecimal raisedAmount;
 
     private String status;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
 
     public Campaign() {
     }
 
-    public Integer getCampaignId() {
+    public Long getCampaignId() {
         return campaignId;
     }
 
-    public void setCampaignId(Integer campaignId) {
+    public void setCampaignId(Long campaignId) {
         this.campaignId = campaignId;
     }
 
@@ -77,13 +71,5 @@ public class Campaign {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 }
