@@ -44,33 +44,69 @@ function Campaigns() {
           Support our active campaigns and make a meaningful difference.
         </p>
 
-        {campaigns.map((campaign) => (
-          <div key={campaign.campaignId}>
-            <h2>{campaign.title}</h2>
+        <div className="campaign-grid">
+          {campaigns.map((campaign) => {
+            const target = Number(campaign.targetAmount);
+            const raised = Number(campaign.raisedAmount);
 
-            <p>{campaign.description}</p>
+            const progress =
+              target > 0 ? Math.min((raised / target) * 100, 100) : 0;
 
-            <p>
-              <strong>Target:</strong> ₹{campaign.targetAmount}
-            </p>
+            return (
+              <div className="campaign-card" key={campaign.campaignId}>
+                <h2>{campaign.title}</h2>
 
-            <p>
-              <strong>Raised:</strong> ₹{campaign.raisedAmount}
-            </p>
+                <p>{campaign.description}</p>
 
-            <p>
-              <strong>Status:</strong> {campaign.status}
-            </p>
+                <p>
+                  <strong>Target:</strong>{" "}
+                  ₹{target.toLocaleString("en-IN")}
+                </p>
 
-            <button
-              onClick={() =>
-                navigate(`/donate?campaignId=${campaign.campaignId}`)
-              }
-            >
-              Donate Now
-            </button>
-          </div>
-        ))}
+                <p>
+                  <strong>Raised:</strong>{" "}
+                  ₹{raised.toLocaleString("en-IN")}
+                </p>
+
+                <p>
+                  <strong>Status:</strong> {campaign.status}
+                </p>
+
+                <div
+                  style={{
+                    width: "100%",
+                    height: "12px",
+                    backgroundColor: "#ddd",
+                    borderRadius: "10px",
+                    overflow: "hidden",
+                    margin: "15px 0 5px",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: `${progress}%`,
+                      height: "100%",
+                      backgroundColor: "#10b981",
+                      borderRadius: "10px",
+                    }}
+                  ></div>
+                </div>
+
+                <p>
+                  <strong>{progress.toFixed(1)}%</strong> funded
+                </p>
+
+                <button
+                  onClick={() =>
+                    navigate(`/donate?campaignId=${campaign.campaignId}`)
+                  }
+                >
+                  Donate Now
+                </button>
+              </div>
+            );
+          })}
+        </div>
       </section>
     </main>
   );
