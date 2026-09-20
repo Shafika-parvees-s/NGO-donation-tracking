@@ -31,6 +31,15 @@ public class Authcontroller {
     public ResponseEntity<String> register(
             @RequestBody RegisterRequest request) {
 
+        // Validate required fields
+        if (request.getName() == null || request.getName().isBlank()
+                || request.getEmail() == null || request.getEmail().isBlank()
+                || request.getPassword() == null || request.getPassword().isBlank()) {
+
+            return ResponseEntity.badRequest()
+                    .body("Name, email and password are required");
+        }
+
         // Check if email already exists
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
 
@@ -67,6 +76,14 @@ public class Authcontroller {
     @PostMapping("/login")
     public ResponseEntity<String> login(
             @RequestBody LoginRequest request) {
+
+        // Validate required fields
+        if (request.getEmail() == null || request.getEmail().isBlank()
+                || request.getPassword() == null || request.getPassword().isBlank()) {
+
+            return ResponseEntity.badRequest()
+                    .body("Email and password are required");
+        }
 
         // Find user using email
         User user = userRepository
