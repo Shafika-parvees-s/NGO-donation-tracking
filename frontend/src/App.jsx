@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import Donate from "./pages/Donate";
 import DonationHistory from "./pages/DonationHistory";
 import Contact from "./pages/Contact";
+import MyDonations from "./pages/MyDonations";
 function App() {
   return (
     <BrowserRouter>
@@ -27,6 +28,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/volunteer" element={<Volunteer />} />
         <Route path="/impact" element={<Impact />} />
+        <Route path="/my-donations" element={<MyDonations />} />
         <Route
   path="/campaign-updates"
   element={<CampaignUpdates />}

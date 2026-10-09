@@ -1712,3 +1712,238 @@ hr {
   }
 
 }
+/* My Donations Page */
+
+.my-donations {
+  min-height: 80vh;
+  padding: 50px 7%;
+  background: #f1f5f9;
+}
+
+/* Header Section */
+.my-donations-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 100px 25px;
+  border-radius: 28px;
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #1e3a5f,
+    #134e4a
+  );
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.18);
+}
+
+.my-donations-header h1 {
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 800;
+  margin: 20px 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.my-donations-header > p:last-child {
+  color: #e2e8f0;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.my-donations-header .section-label {
+  color: #22d3ee;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* Donation Summary */
+.donation-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 850px;
+  margin: 0 auto 40px;
+}
+
+.summary-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card h3 {
+  color: #64748b;
+  font-size: 16px;
+}
+
+.summary-card p {
+  color: #059669;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+/* Donation History */
+.donation-history {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.donation-history h2 {
+  color: #123b2a;
+  margin-bottom: 20px;
+  font-size: 26px;
+}
+
+.donation-table-wrapper {
+  overflow-x: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+.donation-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+.donation-table th,
+.donation-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.donation-table th {
+  background: #123b2a;
+  color: #ffffff;
+}
+
+.donation-table td {
+  color: #334155;
+}
+
+.donation-table tbody tr:hover {
+  background: #f0fdf4;
+}
+
+/* Payment Badge */
+.payment-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Empty Donation State */
+.no-donations {
+  text-align: center;
+  padding: 45px 20px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+.no-donations h2 {
+  color: #123b2a;
+}
+
+.no-donations p {
+  color: #64748b;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .my-donations {
+    padding: 30px 5%;
+  }
+
+  .my-donations-header {
+    padding: 65px 18px;
+    border-radius: 20px;
+  }
+
+  .my-donations-header h1 {
+    font-size: 30px;
+  }
+
+  .my-donations-header > p:last-child {
+    font-size: 16px;
+  }
+
+  .donation-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .donation-history h2 {
+    font-size: 22px;
+  }
+}
+/* FIX: My Donations Table Text Visibility */
+
+.my-donations .donation-table-wrapper {
+  background: #ffffff !important;
+}
+
+.my-donations .donation-table {
+  background: #ffffff !important;
+  color: #1e293b !important;
+}
+
+.my-donations .donation-table thead th {
+  background: #123b2a !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.my-donations .donation-table tbody tr {
+  background: #ffffff !important;
+}
+
+.my-donations .donation-table tbody td {
+  color: #334155 !important;
+  background: #ffffff !important;
+  font-size: 16px;
+}
+
+.my-donations .donation-table tbody tr:hover td {
+  background: #f0fdf4 !important;
+  color: #123b2a !important;
+}
+
+.my-donations .payment-badge {
+  background: #d1fae5 !important;
+  color: #065f46 !important;
+  font-weight: 700;
+}
+
+/* Summary cards */
+.my-donations .summary-card {
+  background: #ffffff !important;
+}
+
+.my-donations .summary-card h3 {
+  color: #64748b !important;
+}
+
+.my-donations .summary-card p {
+  color: #059669 !important;
+}
+
+/* Donation history heading */
+.my-donations .donation-history h2 {
+  color: #123b2a !important;
+}
