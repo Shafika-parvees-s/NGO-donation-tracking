@@ -9,7 +9,7 @@ function Campaigns() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/campaigns")
+    fetch("https://ngo-donation-tracking.onrender.com/api/campaigns")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch campaigns");
@@ -21,8 +21,8 @@ function Campaigns() {
         setLoading(false);
       })
       .catch((error) => {
-        console.error(error);
-        setError("Unable to load campaigns");
+        console.error("Campaign fetch error:", error);
+        setError("Unable to load campaigns. Please try again later.");
         setLoading(false);
       });
   }, []);
@@ -44,69 +44,77 @@ function Campaigns() {
           Support our active campaigns and make a meaningful difference.
         </p>
 
-        <div className="campaign-grid">
-          {campaigns.map((campaign) => {
-            const target = Number(campaign.targetAmount);
-            const raised = Number(campaign.raisedAmount);
+        {campaigns.length === 0 ? (
+          <p>No campaigns available right now.</p>
+        ) : (
+          <div className="campaign-grid">
+            {campaigns.map((campaign) => {
+              const target = Number(campaign.targetAmount) || 0;
+              const raised = Number(campaign.raisedAmount) || 0;
 
-            const progress =
-              target > 0 ? Math.min((raised / target) * 100, 100) : 0;
+              const progress =
+                target > 0
+                  ? Math.min((raised / target) * 100, 100)
+                  : 0;
 
-            return (
-              <div className="campaign-card" key={campaign.campaignId}>
-                <h2>{campaign.title}</h2>
+              return (
+                <div className="campaign-card" key={campaign.campaignId}>
+                  <h2>{campaign.title}</h2>
 
-                <p>{campaign.description}</p>
+                  <p>{campaign.description}</p>
 
-                <p>
-                  <strong>Target:</strong>{" "}
-                  ₹{target.toLocaleString("en-IN")}
-                </p>
+                  <p>
+                    <strong>Target:</strong>{" "}
+                    ₹{target.toLocaleString("en-IN")}
+                  </p>
 
-                <p>
-                  <strong>Raised:</strong>{" "}
-                  ₹{raised.toLocaleString("en-IN")}
-                </p>
+                  <p>
+                    <strong>Raised:</strong>{" "}
+                    ₹{raised.toLocaleString("en-IN")}
+                  </p>
 
-                <p>
-                  <strong>Status:</strong> {campaign.status}
-                </p>
+                  <p>
+                    <strong>Status:</strong> {campaign.status}
+                  </p>
 
-                <div
-                  style={{
-                    width: "100%",
-                    height: "12px",
-                    backgroundColor: "#ddd",
-                    borderRadius: "10px",
-                    overflow: "hidden",
-                    margin: "15px 0 5px",
-                  }}
-                >
                   <div
                     style={{
-                      width: `${progress}%`,
-                      height: "100%",
-                      backgroundColor: "#10b981",
+                      width: "100%",
+                      height: "12px",
+                      backgroundColor: "#ddd",
                       borderRadius: "10px",
+                      overflow: "hidden",
+                      margin: "15px 0 5px",
                     }}
-                  ></div>
+                  >
+                    <div
+                      style={{
+                        width: `${progress}%`,
+                        height: "100%",
+                        backgroundColor: "#10b981",
+                        borderRadius: "10px",
+                      }}
+                    />
+                  </div>
+
+                  <p>
+                    <strong>{progress.toFixed(1)}%</strong> funded
+                  </p>
+
+                  <button
+                    onClick={() =>
+                      navigate(
+                        `/donate?campaignId=${campaign.campaignId}`
+                      )
+                    }
+                  >
+                    Donate Now
+                  </button>
                 </div>
-
-                <p>
-                  <strong>{progress.toFixed(1)}%</strong> funded
-                </p>
-
-                <button
-                  onClick={() =>
-                    navigate(`/donate?campaignId=${campaign.campaignId}`)
-                  }
-                >
-                  Donate Now
-                </button>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </section>
     </main>
   );
