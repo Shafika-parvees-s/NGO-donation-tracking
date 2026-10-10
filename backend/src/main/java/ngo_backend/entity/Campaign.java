@@ -9,22 +9,29 @@ public class Campaign {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "campaign_id")
     private Long campaignId;
 
+    @Column(name = "title")
     private String title;
 
-    @Column(length = 1000)
+    @Column(name = "description", length = 1000)
     private String description;
 
+    @Column(name = "target_amount", precision = 38, scale = 2)
     private BigDecimal targetAmount;
 
+    @Column(name = "raised_amount", precision = 38, scale = 2)
     private BigDecimal raisedAmount;
 
+    @Column(name = "status")
     private String status;
 
+    // Default constructor
     public Campaign() {
     }
 
+    // Getters and Setters
     public Long getCampaignId() {
         return campaignId;
     }
